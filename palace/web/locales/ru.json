@@ -1,0 +1,145 @@
+{
+  "locale": { "short": "RU", "name": "Русский" },
+  "fmt": {
+    "percent": "{v} %",
+    "degrees": "{v}°",
+    "kelvin": "{v} K",
+    "quoted": "«{name}»"
+  },
+  "theme": { "chain_label": "Переключить тему", "chain_title": "Дёрни" },
+  "ribbon": {
+    "refresh": "Перечитать всё из Home Assistant",
+    "save": "Сохранить расстановку",
+    "names_show": "Показывать названия",
+    "names_hide": "Названия показаны — скрыть",
+    "hidden_show": "Показать скрытое",
+    "hidden_hide": "Скрытое показано — спрятать",
+    "language": "Язык",
+    "save_failed": "Не сохранилось: {error}"
+  },
+  "link": {
+    "ha_on": "Home Assistant: на связи",
+    "ha_off": "Home Assistant: нет связи",
+    "palace_off": "Palace не отвечает"
+  },
+  "auth": { "prompt": "Ключ API (X-Api-Key)" },
+  "panes": {
+    "map": "Карта устройств",
+    "rooms": "Пространства",
+    "splitter": "Потяни — карта шире или уже; двойной клик — пополам"
+  },
+  "tabs": { "label": "Разделы", "map": "Карта", "rooms": "Список" },
+  "map": { "empty": "Дом пока пуст", "all_hidden": "Всё скрыто" },
+  "rooms": {
+    "no_area": "Без зоны",
+    "empty": "Дом пока пуст.",
+    "all_hidden": "Всё скрыто — глаз в ленте покажет."
+  },
+  "card": {
+    "unavailable": "Недоступно",
+    "change_icon": "Сменить иконку",
+    "show": "Показать",
+    "hide": "Скрыть",
+    "battery": "Батарея"
+  },
+  "control": {
+    "light": "свет",
+    "brightness": "яркость",
+    "hue": "оттенок",
+    "saturation": "насыщенность",
+    "color_temp": "температура света",
+    "effect": "эффект",
+    "power": "питание",
+    "automation": "автоматизация",
+    "switch": "вкл",
+    "run": "запустить",
+    "fan": "вентилятор",
+    "speed": "скорость",
+    "humidifier": "увлажнитель",
+    "humidity": "влажность",
+    "cover": "шторы",
+    "position": "положение",
+    "open": "Открыть",
+    "stop": "Остановить",
+    "close": "Закрыть",
+    "climate": "климат",
+    "target": "задано",
+    "player": "плеер",
+    "volume": "громкость",
+    "lock": "замок",
+    "locked": "заперто",
+    "unlocked": "открыто",
+    "vacuum": "пылесос",
+    "vacuum_start": "старт",
+    "vacuum_pause": "пауза",
+    "vacuum_home": "домой",
+    "sensor": "датчик"
+  },
+  "state": {
+    "cover": { "open": "открыто", "closed": "закрыто", "opening": "открывается", "closing": "закрывается" },
+    "vacuum": { "cleaning": "убирает", "docked": "на базе", "returning": "едет домой", "idle": "стоит", "paused": "пауза", "error": "ошибка" },
+    "media": { "playing": "играет", "paused": "пауза", "idle": "ждёт", "standby": "дежурный режим", "buffering": "загружает" }
+  },
+  "hvac": {
+    "off": "выкл", "heat": "обогрев", "cool": "охлаждение", "heat_cool": "обогрев/охл.",
+    "auto": "авто", "dry": "сушка", "fan_only": "вентилятор"
+  },
+  "class": {
+    "temperature": "температура", "humidity": "влажность", "illuminance": "освещённость", "power": "мощность",
+    "energy": "энергия", "voltage": "напряжение", "current": "ток", "pressure": "давление", "co2": "CO₂",
+    "pm25": "PM2.5", "signal_strength": "сигнал", "moisture": "влага", "motion": "движение",
+    "occupancy": "присутствие", "door": "дверь", "window": "окно", "opening": "открыто", "smoke": "дым",
+    "connectivity": "связь", "plug": "розетка", "light": "свет", "vibration": "вибрация", "presence": "присутствие",
+    "battery": "батарея"
+  },
+  "binary": {
+    "default": { "on": "да", "off": "нет" },
+    "door": { "on": "открыто", "off": "закрыто" },
+    "window": { "on": "открыто", "off": "закрыто" },
+    "opening": { "on": "открыто", "off": "закрыто" },
+    "garage_door": { "on": "открыто", "off": "закрыто" },
+    "motion": { "on": "движение", "off": "тихо" },
+    "occupancy": { "on": "кто-то есть", "off": "никого" },
+    "presence": { "on": "дома", "off": "нет" },
+    "smoke": { "on": "дым!", "off": "чисто" },
+    "moisture": { "on": "мокро", "off": "сухо" },
+    "battery": { "on": "садится", "off": "в порядке" },
+    "connectivity": { "on": "на связи", "off": "нет связи" },
+    "power": { "on": "есть", "off": "нет" },
+    "plug": { "on": "включено", "off": "выключено" },
+    "light": { "on": "светло", "off": "темно" },
+    "vibration": { "on": "трясёт", "off": "спокойно" }
+  },
+  "verb": {
+    "turn_on": "включить",
+    "turn_off": "выключить",
+    "toggle": "переключить",
+    "adjust": "настроить",
+    "open_cover": "открыть",
+    "close_cover": "закрыть",
+    "stop_cover": "остановить",
+    "set_cover_position": "сдвинуть",
+    "lock": "запереть",
+    "unlock": "отпереть",
+    "start": "запустить",
+    "return_to_base": "вернуть на базу",
+    "pause": "поставить на паузу",
+    "stop": "остановить",
+    "trigger": "запустить",
+    "media_play": "включить",
+    "media_pause": "поставить на паузу"
+  },
+  "failure": {
+    "title": "Не удалось {verb} {name}",
+    "unconfirmed_title": "{name}: нет ответа",
+    "unconfirmed": "Команда «{verb}» дошла до Home Assistant, но за {seconds} с состояние не изменилось. Возможно, устройство не в сети.",
+    "busy_title": "{name}: ещё выполняется прошлая команда",
+    "busy": "Дождитесь её — возможно, её отправили из другой вкладки.",
+    "ha_offline": "Нет связи с Home Assistant, команда не отправлена.",
+    "ha_error": "Home Assistant вернул ошибку.",
+    "refused": "Palace не может выполнить такую команду.",
+    "timeout": "Сервер Palace не ответил за {seconds} с.",
+    "network": "Нет связи с сервером Palace.",
+    "unauthorized": "Нужен ключ API."
+  }
+}

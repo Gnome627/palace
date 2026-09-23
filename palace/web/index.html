@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Palace</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply the saved theme before first paint so the page never flashes the wrong one.
+    try {
+      const t = JSON.parse(localStorage.getItem("palace.theme") || "null")
+        || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+  <!-- the words: every visible string is a key into locales/<id>.json (data-i18n*, t() in js/) -->
+  <script src="icons.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <div class="chain" id="chain" role="button" data-i18n-label="theme.chain_label" data-i18n-title="theme.chain_title">
+    <svg viewBox="0 0 24 260" width="24" height="260" aria-hidden="true">
+      <g class="links"></g>
+      <circle class="knob" cx="12" cy="248" r="7"></circle>
+    </svg>
+  </div>
+
+  <header class="top">
+    <h1>Palace</h1>
+    <div class="ribbon">
+      <button class="tool" id="refresh" data-icon="refresh" data-i18n-title="ribbon.refresh" data-i18n-label="ribbon.refresh"></button>
+      <button class="tool" id="save" data-icon="content-save" data-i18n-title="ribbon.save" data-i18n-label="ribbon.save"></button>
+      <button class="tool" id="names" data-icon="label"></button>
+      <button class="tool" id="hidden" data-icon="eye"></button>
+      <select class="lang" id="lang" data-i18n-title="ribbon.language" data-i18n-label="ribbon.language"></select>
+      <span class="dot" id="haDot"></span>
+    </div>
+  </header>
+
+  <main class="panes">
+    <section class="map" id="map" data-i18n-label="panes.map"></section>
+    <div class="splitter" id="splitter" data-i18n-title="panes.splitter" aria-hidden="true"></div>
+    <section class="rooms" id="rooms" data-i18n-label="panes.rooms"></section>
+  </main>
+
+  <!-- phone: the two panes become two tabs, switched from a bar at the bottom -->
+  <nav class="tabs" id="tabs" data-i18n-label="tabs.label">
+    <button class="tab active" data-tab="map" data-icon="map-outline"><span data-i18n="tabs.map"></span></button>
+    <button class="tab" data-tab="rooms" data-icon="view-agenda-outline"><span data-i18n="tabs.rooms"></span></button>
+  </nav>
+
+  <!-- what went wrong with an action: HA error, no change in time, no answer -->
+  <div class="toasts" id="toasts" aria-live="assertive"></div>
+
+  <!-- icon picker: a grid that opens next to the card's icon -->
+  <div class="picker" id="picker" hidden></div>
+</body>
+</html>

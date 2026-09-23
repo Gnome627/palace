@@ -1,0 +1,10 @@
+.git
+.venv
+.env
+.pytest_cache
+**/__pycache__
+*.egg-info
+tests
+scripts
+palace.yaml
+browser-check

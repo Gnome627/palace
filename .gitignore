@@ -1,0 +1,39 @@
+# user data: secrets, the arrangement written by the page, local docker volumes
+.env
+.env.*
+!.env.example
+palace.yaml
+*.tmp
+data/
+
+# caches, builds, environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+browser-check/
+
+# agent and editor files
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.continue/
+.windsurf/
+.codeium/
+.github/copilot-instructions.md
+.vscode/
+.idea/
+*.swp
+.DS_Store

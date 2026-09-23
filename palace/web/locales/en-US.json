@@ -1,0 +1,145 @@
+{
+  "locale": { "short": "US", "name": "English (US)" },
+  "fmt": {
+    "percent": "{v}%",
+    "degrees": "{v}°",
+    "kelvin": "{v} K",
+    "quoted": "“{name}”"
+  },
+  "theme": { "chain_label": "Switch the theme", "chain_title": "Pull" },
+  "ribbon": {
+    "refresh": "Reload everything from Home Assistant",
+    "save": "Save the arrangement",
+    "names_show": "Show names",
+    "names_hide": "Names shown — hide",
+    "hidden_show": "Show hidden",
+    "hidden_hide": "Hidden shown — hide again",
+    "language": "Language",
+    "save_failed": "Not saved: {error}"
+  },
+  "link": {
+    "ha_on": "Home Assistant: connected",
+    "ha_off": "Home Assistant: no connection",
+    "palace_off": "Palace is not responding"
+  },
+  "auth": { "prompt": "API key (X-Api-Key)" },
+  "panes": {
+    "map": "Device map",
+    "rooms": "Areas",
+    "splitter": "Drag — a wider or narrower map; double-click — half and half"
+  },
+  "tabs": { "label": "Sections", "map": "Map", "rooms": "List" },
+  "map": { "empty": "The house is empty so far", "all_hidden": "Everything is hidden" },
+  "rooms": {
+    "no_area": "No area",
+    "empty": "The house is empty so far.",
+    "all_hidden": "Everything is hidden — the eye in the ribbon shows it."
+  },
+  "card": {
+    "unavailable": "Unavailable",
+    "change_icon": "Change the icon",
+    "show": "Show",
+    "hide": "Hide",
+    "battery": "Battery"
+  },
+  "control": {
+    "light": "light",
+    "brightness": "brightness",
+    "hue": "hue",
+    "saturation": "saturation",
+    "color_temp": "color temperature",
+    "effect": "effect",
+    "power": "power",
+    "automation": "automation",
+    "switch": "on",
+    "run": "run",
+    "fan": "fan",
+    "speed": "speed",
+    "humidifier": "humidifier",
+    "humidity": "humidity",
+    "cover": "cover",
+    "position": "position",
+    "open": "Open",
+    "stop": "Stop",
+    "close": "Close",
+    "climate": "climate",
+    "target": "target",
+    "player": "player",
+    "volume": "volume",
+    "lock": "lock",
+    "locked": "locked",
+    "unlocked": "unlocked",
+    "vacuum": "vacuum",
+    "vacuum_start": "start",
+    "vacuum_pause": "pause",
+    "vacuum_home": "home",
+    "sensor": "sensor"
+  },
+  "state": {
+    "cover": { "open": "open", "closed": "closed", "opening": "opening", "closing": "closing" },
+    "vacuum": { "cleaning": "cleaning", "docked": "docked", "returning": "returning", "idle": "idle", "paused": "paused", "error": "error" },
+    "media": { "playing": "playing", "paused": "paused", "idle": "idle", "standby": "standby", "buffering": "buffering" }
+  },
+  "hvac": {
+    "off": "off", "heat": "heat", "cool": "cool", "heat_cool": "heat/cool",
+    "auto": "auto", "dry": "dry", "fan_only": "fan only"
+  },
+  "class": {
+    "temperature": "temperature", "humidity": "humidity", "illuminance": "illuminance", "power": "power",
+    "energy": "energy", "voltage": "voltage", "current": "current", "pressure": "pressure", "co2": "CO₂",
+    "pm25": "PM2.5", "signal_strength": "signal", "moisture": "moisture", "motion": "motion",
+    "occupancy": "occupancy", "door": "door", "window": "window", "opening": "opening", "smoke": "smoke",
+    "connectivity": "connectivity", "plug": "plug", "light": "light", "vibration": "vibration", "presence": "presence",
+    "battery": "battery"
+  },
+  "binary": {
+    "default": { "on": "yes", "off": "no" },
+    "door": { "on": "open", "off": "closed" },
+    "window": { "on": "open", "off": "closed" },
+    "opening": { "on": "open", "off": "closed" },
+    "garage_door": { "on": "open", "off": "closed" },
+    "motion": { "on": "motion", "off": "clear" },
+    "occupancy": { "on": "occupied", "off": "clear" },
+    "presence": { "on": "home", "off": "away" },
+    "smoke": { "on": "smoke!", "off": "clear" },
+    "moisture": { "on": "wet", "off": "dry" },
+    "battery": { "on": "low", "off": "normal" },
+    "connectivity": { "on": "connected", "off": "disconnected" },
+    "power": { "on": "on", "off": "off" },
+    "plug": { "on": "plugged in", "off": "unplugged" },
+    "light": { "on": "light", "off": "dark" },
+    "vibration": { "on": "vibrating", "off": "still" }
+  },
+  "verb": {
+    "turn_on": "turn on",
+    "turn_off": "turn off",
+    "toggle": "toggle",
+    "adjust": "adjust",
+    "open_cover": "open",
+    "close_cover": "close",
+    "stop_cover": "stop",
+    "set_cover_position": "move",
+    "lock": "lock",
+    "unlock": "unlock",
+    "start": "start",
+    "return_to_base": "send home",
+    "pause": "pause",
+    "stop": "stop",
+    "trigger": "run",
+    "media_play": "play",
+    "media_pause": "pause"
+  },
+  "failure": {
+    "title": "Couldn't {verb} {name}",
+    "unconfirmed_title": "{name}: no response",
+    "unconfirmed": "The “{verb}” command reached Home Assistant, but the state didn't change in {seconds} s. The device may be offline.",
+    "busy_title": "{name}: the previous command is still running",
+    "busy": "Wait for it — it may have been sent from another tab.",
+    "ha_offline": "No connection to Home Assistant; the command wasn't sent.",
+    "ha_error": "Home Assistant returned an error.",
+    "refused": "Palace can't do that.",
+    "timeout": "The Palace server didn't answer in {seconds} s.",
+    "network": "No connection to the Palace server.",
+    "unauthorized": "An API key is needed."
+  }
+}
