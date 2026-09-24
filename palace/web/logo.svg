@@ -1,14 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- a pediment on its cornice, and under it a hoop chandelier hung on the links of the page's theme chain -->
+  <!-- a "p": the roof's triangle leant left is the letter, its long side the stem; a brass dot is the bowl -->
   <rect x="2" y="2" width="60" height="60" rx="14" fill="#f5efe3"/>
-  <path d="M32 9 L54 23 H10 Z" fill="#2a2521"/>
-  <rect x="10" y="24" width="44" height="2.6" rx=".8" fill="#2a2521"/>
-  <g fill="none" stroke="#8a6d3b" stroke-width="1.1">
-    <rect x="30.2" y="26.6" width="3.6" height="5.5" rx="1.8"/>
-    <rect x="31" y="31.1" width="2" height="5.5" rx="1"/>
-  </g>
-  <path d="M32 36.6 V38.1 L18.5 50.1 M32 38.1 L45.5 50.1" fill="none" stroke="#8a6d3b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="32" cy="50.1" rx="14" ry="3.4" fill="none" stroke="#2a2521" stroke-width="2.4"/>
-  <g fill="#2a2521"><rect x="18.2" y="44.7" width="2.6" height="5" rx=".5"/><rect x="43.2" y="44.7" width="2.6" height="5" rx=".5"/><rect x="30.7" y="48.1" width="2.6" height="5" rx=".5"/></g>
-  <g fill="#c9a961"><circle cx="19.5" cy="42.3" r="2.4"/><circle cx="44.5" cy="42.3" r="2.4"/><circle cx="32" cy="45.7" r="2.4"/></g>
+  <path d="M10 55 L34.4 9 L54 36.1 Z" fill="#2a2521"/>
+  <circle cx="39.4" cy="31.7" r="5.8" fill="#c9a961"/>
 </svg>
