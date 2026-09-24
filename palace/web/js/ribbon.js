@@ -12,7 +12,8 @@ export function initRibbon({ onReload, onFlags }) {
   Object.assign(ui, { refresh: $("refresh"), save: $("save"), names: $("names"), hidden: $("hidden"), lang: $("lang"), dot: $("haDot") });
   for (const b of document.querySelectorAll(".tool[data-icon]")) setIcon(b, b.dataset.icon);
 
-  ui.refresh.addEventListener("click", onReload);
+  ui.refresh.addEventListener("click", () => { turn(); onReload(); });
+  ui.refresh.addEventListener("animationend", () => ui.refresh.classList.remove("turning"));
   ui.save.addEventListener("click", save);
   onDirtyChange((dirty) => ui.save.classList.toggle("dirty", dirty));
   // unsaved arrangement: the browser asks before leaving (returnValue — for browsers before Chrome 119)
@@ -26,6 +27,13 @@ export function initRibbon({ onReload, onFlags }) {
   ui.lang.addEventListener("change", () => setLocale(ui.lang.value));
   onLocaleChange(words);
   words();
+}
+
+/** Half a turn of the refresh arrows, played to the end however short the click. */
+function turn() {
+  ui.refresh.classList.remove("turning");
+  void ui.refresh.offsetWidth;       // restart the animation
+  ui.refresh.classList.add("turning");
 }
 
 /** Everything in the ribbon that is worded by state, not by markup. */
