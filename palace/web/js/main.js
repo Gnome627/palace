@@ -8,6 +8,7 @@
  */
 import { act, initActions, toggleCard } from "./actions.js";
 import { $ } from "./dom.js";
+import { closeDropdown, dropdownOpen, initDropdown } from "./dropdown.js";
 import { initHover, relight } from "./hover.js";
 import { initI18n, onLocaleChange } from "./i18n.js";
 import { initLive, load, refresh, startFollowing } from "./live.js";
@@ -26,6 +27,7 @@ const rooms = $("rooms");
 
 function render() {
   closePicker();
+  closeDropdown();
   placeNew(map.clientWidth || 600, map.clientHeight || 500);
   renderMap(map);
   renderRooms(rooms, act);
@@ -35,10 +37,10 @@ function render() {
 /** A slider or a field in use: redrawing under it would pull it from under the user's finger. */
 function usingControl() {
   const focused = document.activeElement;
-  return rooms.contains(focused) && focused.matches("input:not([type=checkbox]), select");
+  return rooms.contains(focused) && focused.matches("input:not([type=checkbox])");
 }
 
-const handsBusy = () => dragging() || reordering() || pickerOpen() || usingControl();
+const handsBusy = () => dragging() || reordering() || pickerOpen() || dropdownOpen() || usingControl();
 
 function toggleHidden(id) {
   const entry = placed(id);
@@ -62,6 +64,7 @@ initMap(map, { onToggle: toggleCard });
 initRooms(rooms, { onIcon: togglePicker, onToggleHidden: toggleHidden });
 initReorder(rooms, { onDrop: () => renderRooms(rooms, act) });
 initPicker($("picker"), { onPick: render });
+initDropdown($("dropdown"));
 initHover(map, rooms);
 onLocaleChange(render);
 

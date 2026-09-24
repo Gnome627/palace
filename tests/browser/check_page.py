@@ -74,17 +74,23 @@ async def last_toast(page: Page) -> list[str]:
     return toasts[-1].split("\n") if toasts else []
 
 
+async def choose(page: Page, button: str, value: str) -> None:
+    """A pick in one of the page's dropdowns: the button, then the option in the list it opens."""
+    await page.locator(button).click()
+    await page.locator(f'#dropdown [role=option][data-value="{value}"]').click()
+
+
 async def language(page: Page) -> None:
     check(await page.evaluate("document.documentElement.lang") == "en-US", "an English browser gets en-US")
     check(await page.locator('.tab[data-tab="map"] span').inner_text() == "Map", "the tabs speak English")
-    await page.select_option("#lang", "ru")
+    await choose(page, "#lang", "ru")
     check(await page.locator('.tab[data-tab="map"] span').inner_text() == "Карта", "switching to RU rewords the frame")
     check(await page.get_attribute("#refresh", "title") == "Перечитать всё из Home Assistant", "and the ribbon's titles")
     check("Без зоны" in await page.locator("#rooms").text_content(), "and what is drawn (the no-area block)")
     await page.reload()
     await page.wait_for_selector(".node")
     check(await page.evaluate("document.documentElement.lang") == "ru", "the choice survives a reload")
-    await page.select_option("#lang", "en-US")
+    await choose(page, "#lang", "en-US")
 
 
 async def switching(page: Page, sent: list[str]) -> None:
@@ -113,6 +119,24 @@ async def sliders(page: Page, bodies: list[str]) -> None:
     await page.wait_for_timeout(1500)
     check(any('"brightness"' in b for b in bodies), "a slider sends its value on release")
     check("busy" not in await card.evaluate("n => n.className"), "and the card unlocks even though the slider kept focus")
+
+
+async def dropdowns(page: Page, bodies: list[str]) -> None:
+    mode = page.locator(".rooms .dropdown").first
+    await mode.scroll_into_view_if_needed()
+    await mode.click()
+    check(await page.locator("#dropdown").is_visible(), "a dropdown opens its list")
+    await page.screenshot(path=OUT / "dropdown.png")
+    await page.keyboard.press("Escape")
+    check(await page.locator("#dropdown").is_hidden(), "Esc closes it")
+    await mode.focus()
+    await page.keyboard.press("ArrowDown")
+    await page.keyboard.press("End")
+    bodies.clear()
+    await page.keyboard.press("Enter")
+    await page.wait_for_timeout(1500)
+    check(any('"hvac_mode":"auto"' in b for b in bodies), f"the keys pick an option: {bodies}")
+    check(await page.locator(".rooms .dropdown .choice").first.inner_text() == "auto", "and the button shows it")
 
 
 async def failures(page: Page) -> None:
@@ -199,11 +223,12 @@ async def main() -> None:
                 await language(page)
                 await switching(page, sent)
                 await sliders(page, bodies)
+                await dropdowns(page, bodies)
                 await failures(page)
                 await live(page)
                 await arranging(page)
 
-                await page.select_option("#lang", "ru")
+                await choose(page, "#lang", "ru")
                 await page.locator(f'.node[data-id="{BROKEN}"]').click()
                 await page.wait_for_timeout(1200)
                 check((await last_toast(page))[0] == "Не удалось включить «Сломанная лампа»", "the notes speak Russian too")

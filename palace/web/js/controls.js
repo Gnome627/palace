@@ -4,6 +4,7 @@
  * Labels: the entity's own name when HA gives one, else a word for what it is.
  */
 import { el, icon } from "./dom.js";
+import { dropdown } from "./dropdown.js";
 import { has, t, tOr } from "./i18n.js";
 
 const COLOR_MODES = ["hs", "rgb", "rgbw", "rgbww", "xy"];
@@ -59,13 +60,6 @@ function button(content, title, onClick) {
   return b;
 }
 
-function select(options, current, onChange) {
-  const s = el("select");
-  for (const [value, text] of options) s.appendChild(new Option(text, value, false, value === current));
-  s.addEventListener("change", () => onChange(s.value));
-  return s;
-}
-
 // colour as HA thinks of it: hue 0–360 and saturation 0–100, two sliders; brightness is its own slider
 function colorRows(e, act) {
   const [h0, s0] = e.attributes.hs_color || [0, 0];
@@ -98,7 +92,7 @@ function lightRows(e, act) {
   }
   if (a.effect_list?.length) {
     const options = a.effect_list.map((name) => [name, name]);
-    rows.push(row(t("control.effect"), select(options, a.effect, (v) => act(e.entity_id, "turn_on", { effect: v }))));
+    rows.push(row(t("control.effect"), dropdown(options, a.effect, (v) => act(e.entity_id, "turn_on", { effect: v }))));
   }
   return rows;
 }
@@ -153,7 +147,7 @@ function climateRows(e, act) {
   const a = e.attributes;
   const modes = (a.hvac_modes || []).map((m) => [m, tOr(`hvac.${m}`, m)]);
   const now = a.current_temperature !== undefined ? deg(a.current_temperature) : undefined;
-  const rows = [row(e.name || t("control.climate"), select(modes, e.state, (v) => act(e.entity_id, "set_hvac_mode", { hvac_mode: v })),
+  const rows = [row(e.name || t("control.climate"), dropdown(modes, e.state, (v) => act(e.entity_id, "set_hvac_mode", { hvac_mode: v })),
     { value: now })];
   if (a.temperature !== undefined && a.temperature !== null) {
     const n = el("input");

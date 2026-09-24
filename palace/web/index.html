@@ -36,7 +36,7 @@
       <button class="tool" id="save" data-icon="content-save" data-i18n-title="ribbon.save" data-i18n-label="ribbon.save"></button>
       <button class="tool" id="names" data-icon="label"></button>
       <button class="tool" id="hidden" data-icon="eye"></button>
-      <select class="lang" id="lang" data-i18n-title="ribbon.language" data-i18n-label="ribbon.language"></select>
+      <button class="lang" id="lang" data-i18n-title="ribbon.language" data-i18n-label="ribbon.language"></button>
       <span class="dot" id="haDot"></span>
     </div>
   </header>
@@ -58,5 +58,8 @@
 
   <!-- icon picker: a grid that opens next to the card's icon -->
   <div class="picker" id="picker" hidden></div>
+
+  <!-- the list of whichever dropdown is open: a lamp's effect, a thermostat's mode, the language -->
+  <div class="dropdown-list" id="dropdown" role="listbox" hidden></div>
 </body>
 </html>

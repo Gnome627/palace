@@ -1,6 +1,7 @@
 /* The ribbon at the top: reload from HA, save the arrangement, show names, show hidden, the language, the link dot. */
 import { api } from "./api.js";
 import { $, setIcon } from "./dom.js";
+import { dropdown, setChoice } from "./dropdown.js";
 import { LOCALES, locale, onLocaleChange, setLocale, t, tIn } from "./i18n.js";
 import { layoutToSave, onDirtyChange, setDirty, state } from "./state.js";
 import { store } from "./store.js";
@@ -23,8 +24,7 @@ export function initRibbon({ onReload, onFlags }) {
   ui.hidden.addEventListener("click", () => flip("hidden", onFlags));
 
   // each language is named in itself: "RU", "US"; the full name on hover
-  ui.lang.replaceChildren(...LOCALES.map((id) => Object.assign(new Option(tIn(id, "locale.short"), id), { title: tIn(id, "locale.name") })));
-  ui.lang.addEventListener("change", () => setLocale(ui.lang.value));
+  dropdown(LOCALES.map((id) => [id, tIn(id, "locale.short"), tIn(id, "locale.name")]), locale(), setLocale, ui.lang);
   onLocaleChange(words);
   words();
 }
@@ -45,7 +45,7 @@ function words() {
   ui.hidden.classList.toggle("active", hidden);
   setIcon(ui.hidden, hidden ? "eye-off" : "eye");
   label(ui.hidden, t(hidden ? "ribbon.hidden_hide" : "ribbon.hidden_show"));
-  ui.lang.value = locale();
+  setChoice(ui.lang, locale());
   showLink(link);
 }
 
