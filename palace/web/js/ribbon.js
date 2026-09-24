@@ -8,13 +8,13 @@ import { store } from "./store.js";
 
 const ui = {};
 let link = "ha_off";                 // the last known link state, a key under "link."
+let turns = 0;                       // whole turns of the refresh arrows so far
 
 export function initRibbon({ onReload, onFlags }) {
   Object.assign(ui, { refresh: $("refresh"), save: $("save"), names: $("names"), hidden: $("hidden"), lang: $("lang"), dot: $("haDot") });
   for (const b of document.querySelectorAll(".tool[data-icon]")) setIcon(b, b.dataset.icon);
 
   ui.refresh.addEventListener("click", () => { turn(); onReload(); });
-  ui.refresh.addEventListener("animationend", () => ui.refresh.classList.remove("turning"));
   ui.save.addEventListener("click", save);
   onDirtyChange((dirty) => ui.save.classList.toggle("dirty", dirty));
   // unsaved arrangement: the browser asks before leaving (returnValue — for browsers before Chrome 119)
@@ -29,11 +29,9 @@ export function initRibbon({ onReload, onFlags }) {
   words();
 }
 
-/** Half a turn of the refresh arrows, played to the end however short the click. */
+/** One more whole turn of the refresh arrows: the transition plays it from wherever they are now. */
 function turn() {
-  ui.refresh.classList.remove("turning");
-  void ui.refresh.offsetWidth;       // restart the animation
-  ui.refresh.classList.add("turning");
+  ui.refresh.style.rotate = `${++turns * 360}deg`;
 }
 
 /** Everything in the ribbon that is worded by state, not by markup. */
